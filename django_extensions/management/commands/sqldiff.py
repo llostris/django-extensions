@@ -850,6 +850,10 @@ class MySQLDiff(SQLDiff):
 
             columns = constraint['columns']
             field = fields.get(columns[0])
+            
+            if not field:
+                # Field is missing in model
+                continue
 
             # extra check removed from superclass here, otherwise function is the same
             if len(columns) == 1:
